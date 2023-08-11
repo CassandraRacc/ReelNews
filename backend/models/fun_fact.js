@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const config = require('./../config');
 
-const FunFact = config.define('fun_fact', {
+const FunFact = config.define('funfact', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,

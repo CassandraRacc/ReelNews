@@ -31,6 +31,18 @@ const Article = config.define('article', {
         type: Sequelize.STRING,
         allowNull: false,
     },
+    scope: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+   url: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    image: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
    
 
 }, {timestamps: false});

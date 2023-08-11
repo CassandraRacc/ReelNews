@@ -33,7 +33,7 @@ app.get('/fun_fact', function(req, res){
     FunFact.findAll().then((results) => {
         res.status(200).send(results);
     }).catch((err) => {
-        res.status(500).send('err')
+        res.status(500).send(err)
     });
 });
 

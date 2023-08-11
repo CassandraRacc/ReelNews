@@ -19,6 +19,11 @@ config.authenticate().then(() => {
     console.log(err);
 });
 
+//article to fun fact connection
+FunFact.belongsTo(Article, {
+    foreignKey: 'article_id'
+});
+
 //get article data (working)
 app.get('/article', function(req, res){
     Article.findAll().then((results) => {
@@ -28,7 +33,16 @@ app.get('/article', function(req, res){
     });
 });
 
-//get fun_fact data
+//get articles based on category
+// app.get('/category', function (req, res){
+//     Category.findAll().then((results) => {
+//         res.status(200).send(results);
+//     }).catch((err) => {
+//         res.status(500).send(err);
+//     });
+// });
+
+//get fun_fact data (working)
 app.get('/fun_fact', function(req, res){
     FunFact.findAll().then((results) => {
         res.status(200).send(results);

@@ -43,6 +43,10 @@ const Article = config.define('article', {
         type: Sequelize.STRING,
         allowNull: false,
     },
+    desc: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
    
 
 }, {timestamps: false});

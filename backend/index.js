@@ -29,18 +29,43 @@ app.get('/article', function(req, res){
     Article.findAll().then((results) => {
         res.status(200).send(results);
     }).catch((err) => {
-        res.status(500).send('err')
+        res.status(500).send(err)
     });
 });
 
 //get articles based on category
-// app.get('/category', function (req, res){
-//     Category.findAll().then((results) => {
-//         res.status(200).send(results);
-//     }).catch((err) => {
-//         res.status(500).send(err);
-//     });
+// app.get('/article/:category', function (req, res){
+//   const category = parseInt(req.params.category);
+
+//  Category.findBy(category)
+//.then((result) => {
+//    if(result){
+//        res.status(200).send(result);
+//    } else {
+//        res.status(404).send('Category Not Found');
+//    }
+//})
+//.catch((err) => {
+//    res.ststus(500).send(err);
+//});
 // });
+
+app.get('/filter', function(req, res){
+    let data = {
+        where: {}
+    };
+
+    if(req.query.category !== undefined){
+        data.where.category = req.query.category;
+    }
+
+    Article.findAll(data).then((output) => {
+        res.status(200).send(output);
+    }).catch((err) => {
+        res.status(500).send('err')
+    });
+
+})
 
 //get fun_fact data (working)
 app.get('/fun_fact', function(req, res){

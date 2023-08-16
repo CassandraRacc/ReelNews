@@ -35,7 +35,7 @@ const Article = config.define('article', {
         type: Sequelize.STRING,
         allowNull: false,
     },
-   url: {
+    url: {
         type: Sequelize.STRING,
         allowNull: false,
     },

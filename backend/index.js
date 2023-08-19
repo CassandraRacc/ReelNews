@@ -13,6 +13,9 @@ app.use(cors());
 //middleware
 app.use(express.urlencoded({ extended: false }));
 
+//json
+app.use(bodyparser.json());
+
 //testing database (connected)
 config.authenticate().then(() => {
     console.log('Database is Connected!');

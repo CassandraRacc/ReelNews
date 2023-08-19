@@ -13,8 +13,8 @@ const Article = config.define('article', {
         allowNull: false,
         uniqueKey: true,
     },
-    category: {
-        type: Sequelize.STRING,
+    category_id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
        
     },
@@ -28,10 +28,6 @@ const Article = config.define('article', {
         allowNull: false,
     },
     good_or_bad: {
-        type: Sequelize.STRING,
-        allowNull: false,
-    },
-    scope: {
         type: Sequelize.STRING,
         allowNull: false,
     },

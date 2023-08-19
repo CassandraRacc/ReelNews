@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const config = require('../config');
 
-const Subscriber = config.define('subscriber', {
+const Subscribe = config.define('subscribe', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -28,4 +28,4 @@ const Subscriber = config.define('subscriber', {
 
 }, {timestamps: false});
 
-module.exports = Subscriber;
+module.exports = Subscribe;

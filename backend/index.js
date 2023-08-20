@@ -5,6 +5,7 @@ const Article = require('./models/article');
 const Subscribe = require('./models/subscribe');
 const FunFact = require('./models/fun_fact');
 const Category = require('./models/category');
+const Vibe = require('./models/vibe')
 const cors = require('cors');
 
 //A Threat
@@ -13,8 +14,10 @@ app.use(cors());
 //middleware
 app.use(express.urlencoded({ extended: false }));
 
-//json
-app.use(bodyparser.json());
+//json middleware
+app.use(express.json());
+
+
 
 //testing database (connected)
 config.authenticate().then(() => {
@@ -33,6 +36,11 @@ Category.hasMany(Article, {
     foreignKey: 'category_id'
 });
 
+//article / vibe connection
+Vibe.hasMany(Article, {
+    foreignKey: 'feel_id'
+});
+
 //get article data (working)
 app.get('/article', function (req, res) {
     Article.findAll().then((results) => {
@@ -42,6 +50,7 @@ app.get('/article', function (req, res) {
     });
 });
 
+//get articles sorted by category
 app.get('/categories', function (req, res) {
  
     let data = {
@@ -90,8 +99,21 @@ app.get('/filter', function (req, res) {
 
 })
 
+app.get('/vibes', function (req, res) {
+ 
+    let data = {
+        include:[Article]
+    }
+        Vibe.findAll(data).then((results) => {
+            res.send(results)
+        }).catch((err) => {
+            res.status(500).send(err);
+        });
+
+});
+
 //get fun_fact data (working)
-app.get('/fun_fact', function (req, res) {
+app.get('/funfacts', function (req, res) {
     FunFact.findAll().then((results) => {
         res.status(200).send(results);
     }).catch((err) => {
@@ -109,7 +131,7 @@ app.get('/subscribe', function (req, res) {
 });
 
 //post new subscriber
-app.post('/subscriber', function(req,res){
+app.post('/subscribes', function(req,res){
 
     let formData = req.body;
 

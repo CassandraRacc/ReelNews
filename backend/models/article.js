@@ -27,7 +27,7 @@ const Article = config.define('article', {
         type: Sequelize.DATE,
         allowNull: false,
     },
-    good_or_bad: {
+    feel_id: {
         type: Sequelize.STRING,
         allowNull: false,
     },

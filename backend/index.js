@@ -99,6 +99,7 @@ app.get('/filter', function (req, res) {
 
 })
 
+//get articles based on vibe
 app.get('/vibes', function (req, res) {
  
     let data = {
@@ -119,6 +120,19 @@ app.get('/funfacts', function (req, res) {
     }).catch((err) => {
         res.status(500).send(err)
     });
+});
+
+app.get('/funfact', function (req, res) {
+ 
+    let data = {
+        include:[Article]
+    }
+        FunFact.findAll(data).then((results) => {
+            res.send(results)
+        }).catch((err) => {
+            res.status(500).send(err);
+        });
+
 });
 
 //get subscriber data (working)
